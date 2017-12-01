@@ -1,9 +1,11 @@
 def create
   @cart = current_cart
   product = Product.find(params[:product_id])
-  @line_item = @cart.line_items.build(product: product)
+  @line_item = @cart.add_product(product.id) #app/models/cart.rb
+                                             #add_product(product_id) 
+                                             #line_items.build(product: product)
 
-  respond_to do |fomat| #redirect_to|render one times each only
+  respond_to do |fomat|                 #redirect_to|render one times each only
     if @line_item.save
       fomat.html { redirect_to @line_item.cart,
         notice: 'Line item was successfully created.'}
