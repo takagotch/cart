@@ -1,0 +1,17 @@
+<% if_notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>@title</h1>
+  <div class="entry">
+    <%= image_tag(product.image_url) %>
+    <h3><%= image_tag(product.image_url) %></h3>
+    <%= sanitize(product.description) %>
+    <div class="price">
+      <span class="price"><%= number_to_currency(product.price) %></span>
+      <%= button_to 'take in', line_items_path(product_id: product) %>
+    </div>
+  </div>
+<% end %>
+
+
